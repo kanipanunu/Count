@@ -11,45 +11,40 @@ import android.widget.TextView;
 
 public class MainActivity extends Activity {
 	int n=0;
-	TextView textView;
+	TextView textView,nabeatuText;
 	boolean nabeatu=false;
 	boolean nabecheck=false;
-
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		textView=(TextView) findViewById(R.id.textView);
+		nabeatuText=(TextView)findViewById(R.id.textView1);
 	}
-	public boolean nabecheck(){
-		if(n==n/3*3){
+	public void nabecheck(){
+		if((n/3*3)==n){
 			nabecheck=true;
 		}else if(n/10==3){
 			nabecheck=true;
 		}
-		return nabecheck;
+		if(nabeatu==true){
+			if(nabecheck==true){
+				textView.setTextColor(Color.RED);
+			}else{
+				textView.setTextColor(Color.BLACK);
+			}
+		}
 	}
 	public void plus(View v) {
 		n++;
 		textView.setText(""+n);
-
 		nabecheck();
-		if(nabecheck==false){
-			textView.setTextColor(Color.RED);
-		}else{
-			textView.setTextColor(Color.BLACK);
-		}
 }
 	public void mainasu(View v) {
 		n--;
 		textView.setText(""+n);
 
 		nabecheck();
-		if(nabecheck==false){
-			textView.setTextColor(Color.RED);
-		}else{
-			textView.setTextColor(Color.BLACK);
-		}
 }
 	public void clear(View v) {
 		n=0;
@@ -59,6 +54,13 @@ public class MainActivity extends Activity {
 }
 	public void nabeatu(View v) {
 		nabeatu=!nabeatu;
+		if(nabeatu==true){
+			nabeatuText.setText("Ç»Ç◊Ç†Ç¬Ç‡Å[Ç«Ç»Ç§");
+			nabecheck();
+		}else{
+			nabeatuText.setText("");
+			textView.setTextColor(Color.BLACK);
+		}
 	}
 
 	@Override
