@@ -26,7 +26,12 @@ public class MainActivity extends Activity {
 			nabecheck=true;
 		}else if(n/10==3){
 			nabecheck=true;
+		}else if (n-n/10==3) {
+			nabecheck=true;
+		}else{
+			nabecheck=false;
 		}
+		
 		if(nabeatu==true){
 			if(nabecheck==true){
 				textView.setTextColor(Color.RED);
